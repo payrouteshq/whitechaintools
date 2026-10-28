@@ -9,7 +9,8 @@ const tones: Record<string, string> = {
     "border-highlight/30 bg-highlight/15 text-highlight-foreground dark:text-highlight",
   trialing:
     "border-highlight/30 bg-highlight/15 text-highlight-foreground dark:text-highlight",
-  failed: "border-destructive/30 bg-destructive/10 text-destructive",
+  failed:
+    "border-destructive/30 bg-destructive/10 text-destructive dark:bg-destructive/60 dark:text-destructive-foreground",
   canceled: "border-transparent bg-muted text-muted-foreground",
   paused: "border-transparent bg-muted text-muted-foreground",
 };
