@@ -1,35 +1,23 @@
 import { NextResponse } from "next/server";
 
-import { waitlistSchema } from "@/lib/schemas";
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  let payload: unknown;
-  try {
-    payload = await request.json();
-  } catch {
+  const body = await request.json().catch(() => null);
+  const email = typeof body?.email === "string" ? body.email.trim() : "";
+
+  if (!emailPattern.test(email)) {
     return NextResponse.json(
-      { ok: false, error: "Invalid JSON body" },
+      { ok: false, error: "Enter a valid email address" },
       { status: 400 },
     );
   }
-
-  const parsed = waitlistSchema.safeParse(payload);
-  if (!parsed.success) {
-    return NextResponse.json(
-      { ok: false, error: "Validation failed", issues: parsed.error.issues },
-      { status: 400 },
-    );
-  }
-
-  const { company, ...entry } = parsed.data;
-
-  if (company) return NextResponse.json({ ok: true });
 
   const apiKey = process.env.RESEND_API_KEY;
   const audienceId = process.env.RESEND_AUDIENCE_ID;
 
   if (!apiKey || !audienceId) {
-    console.log("[waitlist]", entry);
+    console.log("[waitlist]", email);
     return NextResponse.json({ ok: true });
   }
 
@@ -41,12 +29,11 @@ export async function POST(request: Request) {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email: entry.email, unsubscribed: false }),
+      body: JSON.stringify({ email, unsubscribed: false }),
     },
   );
 
   if (!response.ok) {
-    console.error("[waitlist] resend failed", response.status);
     return NextResponse.json(
       { ok: false, error: "Could not save your signup, try again" },
       { status: 502 },
