@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
 
-import { MotionProvider } from "@/components/motion-provider";
 import { site } from "@/content/site";
-import { siteUrl } from "@/lib/site-url";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
 
@@ -17,25 +13,14 @@ const onest = Onest({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: site.title,
   description: site.description,
-  openGraph: {
-    title: site.title,
-    description: site.description,
-    siteName: site.name,
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: site.title,
-    description: site.description,
-  },
+  icons: { icon: "data:," },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${onest.variable}`} suppressHydrationWarning>
+    <html lang="en" className={onest.variable} suppressHydrationWarning>
       <body className="min-h-screen font-sans">
         <ThemeProvider
           attribute="class"
@@ -43,10 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <MotionProvider>
-            <TooltipProvider>{children}</TooltipProvider>
-          </MotionProvider>
-          <Toaster />
+          {children}
         </ThemeProvider>
       </body>
     </html>
