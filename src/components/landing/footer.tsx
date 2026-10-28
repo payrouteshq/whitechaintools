@@ -15,9 +15,6 @@ export function Footer() {
         <div className="flex flex-col gap-2">
           <Wordmark className="text-sm" />
           <p className="text-muted-foreground text-xs">Built for Whitechain</p>
-          <p className="text-muted-foreground max-w-sm text-xs">
-            {site.disclaimer}
-          </p>
         </div>
         <div className="flex items-center gap-3">
           {social.map(({ label, href, Icon }) => (
