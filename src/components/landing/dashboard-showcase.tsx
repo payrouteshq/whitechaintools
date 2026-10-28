@@ -221,7 +221,7 @@ export function DashboardShowcase() {
           </div>
           <div className="bg-card rounded-tl-4xl border-l p-5 pb-20 md:p-7 md:pb-7 lg:p-10">
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <h3 className="text-lg font-bold tracking-tight">Overview</h3>
+              <p className="text-lg font-bold tracking-tight">Overview</p>
               <div className="flex gap-2">
                 {["Last 30 days", "US Dollar (USD)"].map((chip) => (
                   <span
