@@ -1,4 +1,5 @@
-import { primitives } from "@/content/landing";
+import { primitives } from "@/content/site";
+import { cn } from "@/lib/utils";
 
 export function Primitives() {
   return (
@@ -12,8 +13,21 @@ export function Primitives() {
         </h2>
         <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
           {primitives.map((item) => (
-            <div key={item.label} className="bg-background border p-6">
-              <p className="mb-2 font-semibold">{item.label}</p>
+            <div
+              key={item.label}
+              className={cn(
+                "bg-background border p-6",
+                "soon" in item && "sm:col-span-2 lg:col-span-3",
+              )}
+            >
+              <p className="mb-2 flex items-center gap-2 font-semibold">
+                {item.label}
+                {"soon" in item ? (
+                  <span className="text-muted-foreground rounded-full border px-2 py-0.5 text-[10px] font-medium tracking-wide uppercase">
+                    Coming soon
+                  </span>
+                ) : null}
+              </p>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {item.description}
               </p>
