@@ -6,7 +6,7 @@ export const site = {
     "Accept payments from anywhere. Open-source, Stripe-like billing on Whitechain that settles in seconds for pennies.",
   disclaimer:
     "WhitechainTools is an independent project and is not affiliated with or endorsed by Whitechain, WhiteBIT or W Group.",
-  github: "https://github.com/devodii/whitechaintools",
+  github: "https://github.com/payrouteshq/whitechaintools",
   x: "https://x.com/payrouteshq",
   linkedin: "https://www.linkedin.com/company/payrouteshq",
 } as const;
