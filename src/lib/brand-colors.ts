@@ -1,8 +1,8 @@
 export const brandColors = {
-  background: "#06090f",
-  foreground: "#eff2f5",
-  primary: "#2bd2c2",
-  primaryForeground: "#001517",
-  mutedForeground: "#989fa8",
-  card: "#0c1219",
+  background: "#000000",
+  foreground: "#ffffff",
+  primary: "#0070f3",
+  primaryForeground: "#ffffff",
+  mutedForeground: "#a1a1aa",
+  card: "#000000",
 } as const;
