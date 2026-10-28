@@ -34,8 +34,9 @@ hold copy, so you can change text without touching them.
 - Status badges use the `Status` type: `shipped-stellar`, `porting`, `planned`.
 - Features already live on StellarTools and being ported set
   `shippedOnStellar: true` plus `status: "porting"`, which renders both badges.
-- Search for `TODO(founder)` to find values that need confirming (chain id,
-  Shopify status, pricing model, Whitechain figures).
+- Values that need confirming before launch: the Whitechain Sepolia chain id
+  (`heroMockup.network`), the Shopify adapter status, the pricing model, and
+  the Whitechain figures in `whyWhitechain`.
 - Team photos are initials avatars. To use photos, add images under
   `public/team/` and add an `AvatarImage` in `src/components/sections/team.tsx`.
 
