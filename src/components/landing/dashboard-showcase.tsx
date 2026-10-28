@@ -10,6 +10,7 @@ import {
   Plus,
   RefreshCw,
   SlidersHorizontal,
+  Sparkles,
   Store,
   Users,
   X,
@@ -19,9 +20,10 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 import { Sparkline } from "@/components/landing/sparkline";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { dashboard } from "@/content/landing";
+import { dashboard } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const navIcons: Record<string, LucideIcon> = {
@@ -36,12 +38,76 @@ const navIcons: Record<string, LucideIcon> = {
   Developers: Code,
 };
 
-function AppDrawer({
-  app,
+type DockApp = (typeof dashboard.apps)[number];
+
+function CopilotChat() {
+  const { messages, confirm } = dashboard.copilot;
+  return (
+    <div className="space-y-3 px-4 pb-4 text-sm">
+      {messages.map((message) => (
+        <div
+          key={message.text}
+          className={cn(
+            "w-fit max-w-[90%] rounded-lg px-3 py-2",
+            message.role === "user"
+              ? "bg-primary text-primary-foreground ml-auto"
+              : "bg-secondary text-secondary-foreground",
+          )}
+        >
+          {message.text}
+        </div>
+      ))}
+      <div className="space-y-2 rounded-lg border p-3">
+        <p className="font-medium">{confirm.title}</p>
+        <div className="flex gap-2">
+          <Button size="xs">{confirm.action}</Button>
+          <Button size="xs" variant="outline">
+            Cancel
+          </Button>
+        </div>
+      </div>
+      <p className="text-muted-foreground text-xs">
+        Coming soon. Every change asks for your confirmation before it runs.
+      </p>
+    </div>
+  );
+}
+
+function Activity({ app }: { app: DockApp }) {
+  return (
+    <ul className="divide-y px-4 text-sm">
+      {app.activity.map((item) => (
+        <li
+          key={item.label}
+          className="flex items-center justify-between gap-3 py-3"
+        >
+          <div className="min-w-0">
+            <p className="font-medium">{item.label}</p>
+            <p className="text-muted-foreground truncate text-xs">
+              {item.detail}
+            </p>
+          </div>
+          <span className="text-muted-foreground shrink-0 text-xs">
+            {item.time}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Drawer({
+  name,
+  tagline,
+  icon,
   onClose,
+  children,
 }: {
-  app: (typeof dashboard.apps)[number];
+  name: string;
+  tagline: string;
+  icon: React.ReactNode;
   onClose: () => void;
+  children: React.ReactNode;
 }) {
   return (
     <>
@@ -54,42 +120,29 @@ function AppDrawer({
         aria-hidden="true"
       />
       <motion.aside
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ type: "spring", damping: 30, stiffness: 300 }}
-        className="bg-background absolute inset-y-0 right-0 z-50 flex w-[min(22rem,85%)] flex-col shadow-2xl"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 24 }}
+        transition={{ duration: 0.25 }}
+        className="bg-background absolute inset-x-2 top-10 bottom-14 z-50 flex flex-col overflow-hidden rounded-t-2xl shadow-2xl md:inset-x-auto md:inset-y-0 md:top-0 md:right-0 md:bottom-0 md:w-88 md:rounded-none"
       >
         <header className="flex items-center gap-3 p-4">
-          <span className="bg-secondary flex size-9 items-center justify-center rounded-lg text-sm font-semibold">
-            {app.monogram}
+          <span className="bg-secondary flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-semibold">
+            {icon}
           </span>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-semibold">{app.name}</p>
-            <p className="text-muted-foreground text-xs">{app.tagline}</p>
+            <p className="truncate text-sm font-semibold">{name}</p>
+            <p className="text-muted-foreground truncate text-xs">{tagline}</p>
           </div>
           <button
             onClick={onClose}
             aria-label="Close"
-            className="text-muted-foreground hover:text-foreground flex size-7 items-center justify-center rounded-md"
+            className="text-muted-foreground hover:text-foreground flex size-7 shrink-0 items-center justify-center rounded-md"
           >
             <X className="size-4" />
           </button>
         </header>
-        <ul className="divide-y overflow-y-auto px-4 text-sm">
-          {app.activity.map((item) => (
-            <li
-              key={item.label}
-              className="flex items-center justify-between py-3"
-            >
-              <div>
-                <p className="font-medium">{item.label}</p>
-                <p className="text-muted-foreground text-xs">{item.detail}</p>
-              </div>
-              <span className="text-muted-foreground text-xs">{item.time}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="flex-1 overflow-y-auto">{children}</div>
       </motion.aside>
     </>
   );
@@ -98,6 +151,8 @@ function AppDrawer({
 export function DashboardShowcase() {
   const [activeApp, setActiveApp] = useState<string | null>(null);
   const app = dashboard.apps.find((item) => item.name === activeApp);
+  const copilotOpen = activeApp === dashboard.copilot.name;
+  const close = () => setActiveApp(null);
 
   return (
     <motion.div
@@ -164,7 +219,7 @@ export function DashboardShowcase() {
             <Switch checked disabled aria-label="Sandbox data" />
             <span className="text-muted-foreground text-xs">Sandbox data</span>
           </div>
-          <div className="bg-card rounded-tl-4xl border-l p-5 md:p-7 lg:p-10">
+          <div className="bg-card rounded-tl-4xl border-l p-5 pb-20 md:p-7 md:pb-7 lg:p-10">
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <h3 className="text-lg font-bold tracking-tight">Overview</h3>
               <div className="flex gap-2">
@@ -207,12 +262,24 @@ export function DashboardShowcase() {
         </div>
       </div>
 
-      <div className="absolute top-1/2 right-3 z-30 flex -translate-y-1/2 flex-col items-center gap-2">
+      <div className="bg-background/95 absolute inset-x-0 bottom-0 z-30 flex h-14 items-center justify-center gap-3 backdrop-blur-sm md:inset-x-auto md:top-1/2 md:right-3 md:bottom-auto md:h-auto md:-translate-y-1/2 md:flex-col md:gap-2 md:bg-transparent md:backdrop-blur-none">
+        <button
+          onClick={() => setActiveApp(dashboard.copilot.name)}
+          title={dashboard.copilot.name}
+          aria-label={dashboard.copilot.name}
+          className={cn(
+            "bg-background flex size-8 items-center justify-center rounded-md shadow-sm",
+            copilotOpen && "ring-primary ring-2",
+          )}
+        >
+          <Sparkles className="size-4" />
+        </button>
         {dashboard.apps.map((item) => (
           <button
             key={item.name}
             onClick={() => setActiveApp(item.name)}
             title={item.name}
+            aria-label={item.name}
             className={cn(
               "bg-background flex size-8 items-center justify-center rounded-md text-xs font-semibold shadow-sm",
               activeApp === item.name && "ring-primary ring-2",
@@ -227,12 +294,27 @@ export function DashboardShowcase() {
       </div>
 
       <AnimatePresence>
+        {copilotOpen ? (
+          <Drawer
+            key="copilot"
+            name={dashboard.copilot.name}
+            tagline={dashboard.copilot.tagline}
+            icon={<Sparkles className="size-4" />}
+            onClose={close}
+          >
+            <CopilotChat />
+          </Drawer>
+        ) : null}
         {app ? (
-          <AppDrawer
+          <Drawer
             key={app.name}
-            app={app}
-            onClose={() => setActiveApp(null)}
-          />
+            name={app.name}
+            tagline={app.tagline}
+            icon={app.monogram}
+            onClose={close}
+          >
+            <Activity app={app} />
+          </Drawer>
         ) : null}
       </AnimatePresence>
     </motion.div>
