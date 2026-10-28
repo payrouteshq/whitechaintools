@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Onest } from "next/font/google";
 
 import { MotionProvider } from "@/components/motion-provider";
 import { site } from "@/content/site";
@@ -10,8 +10,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const onest = Onest({
+  variable: "--font-onest",
+  fallback: ["sans-serif"],
   subsets: ["latin"],
 });
 
@@ -41,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${onest.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen font-sans">
