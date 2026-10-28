@@ -123,7 +123,7 @@ export const dashboard = {
   apps: [
     {
       name: "Resend",
-      monogram: "Re",
+      icon: "/apps/resend.jpg",
       tagline: "Send transactional emails to your customers.",
       activity: [
         { label: "Payment receipt", detail: "sarah@acme.io", time: "2m ago" },
@@ -141,7 +141,7 @@ export const dashboard = {
     },
     {
       name: "Loops",
-      monogram: "Lo",
+      icon: "/apps/loops.png",
       tagline: "Trigger lifecycle email sequences from payment events.",
       activity: [
         {

@@ -17,6 +17,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 
 import { Sparkline } from "@/components/landing/sparkline";
@@ -96,6 +97,18 @@ function Activity({ app }: { app: DockApp }) {
   );
 }
 
+function AppIcon({ app, size }: { app: DockApp; size: number }) {
+  return (
+    <Image
+      src={app.icon}
+      alt=""
+      width={size}
+      height={size}
+      className="size-full rounded-[inherit] object-cover"
+    />
+  );
+}
+
 function Drawer({
   name,
   tagline,
@@ -127,7 +140,7 @@ function Drawer({
         className="bg-background absolute inset-x-2 top-10 bottom-14 z-50 flex flex-col overflow-hidden rounded-t-2xl shadow-2xl md:inset-x-auto md:inset-y-0 md:top-0 md:right-0 md:bottom-0 md:w-88 md:rounded-none"
       >
         <header className="flex items-center gap-3 p-4">
-          <span className="bg-secondary flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-semibold">
+          <span className="bg-secondary flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg">
             {icon}
           </span>
           <div className="min-w-0 flex-1">
@@ -281,11 +294,11 @@ export function DashboardShowcase() {
             title={item.name}
             aria-label={item.name}
             className={cn(
-              "bg-background flex size-8 items-center justify-center rounded-md text-xs font-semibold shadow-sm",
+              "bg-background size-8 overflow-hidden rounded-md shadow-sm",
               activeApp === item.name && "ring-primary ring-2",
             )}
           >
-            {item.monogram}
+            <AppIcon app={item} size={32} />
           </button>
         ))}
         <span className="bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-full shadow-sm">
@@ -310,7 +323,7 @@ export function DashboardShowcase() {
             key={app.name}
             name={app.name}
             tagline={app.tagline}
-            icon={app.monogram}
+            icon={<AppIcon app={app} size={36} />}
             onClose={close}
           >
             <Activity app={app} />
