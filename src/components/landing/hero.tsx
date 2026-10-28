@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { GithubIcon } from "@/components/social-icons";
 import { Button } from "@/components/ui/button";
 import { WaitlistDialog } from "@/components/landing/waitlist-dialog";
-import { heroWords, site } from "@/content/landing";
+import { heroWords, site } from "@/content/site";
 
 function CyclingWord() {
   const [index, setIndex] = useState(0);
@@ -37,8 +37,8 @@ function CyclingWord() {
 
 export function Hero() {
   return (
-    <section className="mx-auto flex max-w-3xl flex-col items-center px-6 pt-28 pb-20 text-center">
-      <h1 className="mb-5 text-[clamp(36px,5.5vw,68px)] leading-[1.06] font-bold tracking-tight">
+    <section className="mx-auto flex max-w-4xl flex-col items-center px-6 pt-28 pb-20 text-center">
+      <h1 className="mb-5 text-[clamp(32px,5.5vw,64px)] leading-[1.06] font-bold tracking-tight">
         Payments for your <CyclingWord />,
         <br />
         built on Whitechain.

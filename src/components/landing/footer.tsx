@@ -1,6 +1,6 @@
 import { GithubIcon, LinkedinIcon, XIcon } from "@/components/social-icons";
 import { Wordmark } from "@/components/wordmark";
-import { site } from "@/content/landing";
+import { site } from "@/content/site";
 
 const social = [
   { label: "GitHub", href: site.github, Icon: GithubIcon },
