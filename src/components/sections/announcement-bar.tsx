@@ -32,9 +32,7 @@ export function AnnouncementBar() {
     dismissedInMemory = true;
     try {
       localStorage.setItem(STORAGE_KEY, "1");
-    } catch {
-      // storage unavailable, dismissal lasts for this visit only
-    }
+    } catch {}
     window.dispatchEvent(new Event(EVENT));
   }
 

@@ -5,10 +5,6 @@ interface Bucket {
 
 const buckets = new Map<string, Bucket>();
 
-/**
- * Simple in-memory token bucket, good enough for a proof of concept. State is
- * per server instance, so it resets on cold starts and is not shared.
- */
 export function takeToken(
   key: string,
   { capacity, refillMs }: { capacity: number; refillMs: number },

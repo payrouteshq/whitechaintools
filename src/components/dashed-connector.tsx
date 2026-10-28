@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 
 interface DashedConnectorProps {
-  /** Horizontal on large screens, vertical below. */
   className?: string;
 }
 

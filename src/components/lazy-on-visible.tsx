@@ -4,15 +4,11 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface LazyOnVisibleProps {
   children: ReactNode;
-  /** Height reserved until the children mount, so nothing shifts. */
+
   minHeight: number;
   rootMargin?: string;
 }
 
-/**
- * Mounts children once the placeholder nears the viewport. Used for heavy
- * interactive widgets below the fold so their code stays off the critical path.
- */
 export function LazyOnVisible({
   children,
   minHeight,

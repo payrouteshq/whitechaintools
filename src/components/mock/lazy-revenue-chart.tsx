@@ -10,10 +10,6 @@ const RevenueChart = dynamic(
   { ssr: false },
 );
 
-/**
- * Reserves the chart's height and mounts recharts only after the page has
- * settled, so the charting library stays off the critical path.
- */
 export function LazyRevenueChart({ className }: { className?: string }) {
   const [ready, setReady] = useState(false);
 

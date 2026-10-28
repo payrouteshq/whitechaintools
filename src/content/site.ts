@@ -9,7 +9,7 @@ export interface Feature {
   icon: LucideIconName;
   status: Status;
   milestone?: Milestone;
-  /** Features already live on StellarTools that are being ported get both badges. */
+
   shippedOnStellar?: boolean;
 }
 
@@ -67,7 +67,6 @@ export const navLinks: NavLink[] = [
   { label: "FAQ", href: "#faq" },
 ];
 
-/** Links shown inline in the header at medium widths; the rest go under "More". */
 export const primaryNavCount = 3;
 
 export const footerColumns = {
@@ -135,7 +134,6 @@ export const dashboardPageIcons: Record<DashboardPage, LucideIconName> = {
 };
 
 export const heroMockup = {
-  // TODO(founder): verify the Whitechain Sepolia chain id before launch
   network: "Whitechain Sepolia · 1874",
   sampleDataLabel: "Sample data",
   testModeLabel: "Test mode",
@@ -255,9 +253,6 @@ export const primitives = {
   ] satisfies Feature[],
 } as const;
 
-// Items live on StellarTools and being ported carry shippedOnStellar plus a
-// "porting" status, so they render both badges.
-// TODO(founder): correct any status or milestone in this map.
 export const platformMap: { tab: string; items: Feature[] }[] = [
   {
     tab: "Payments",
@@ -896,7 +891,6 @@ export const adapters = {
       docsHref: "https://docs.stellartools.dev/integrations/woocommerce",
     },
     {
-      // TODO(founder): verify Shopify status and add the docs link
       name: "Shopify",
       monogram: "Sh",
       category: "Commerce",
@@ -1166,7 +1160,7 @@ export const whyWhitechain = {
   eyebrow: "Why Whitechain",
   title: "Why we're building here.",
   description: "Four reasons Whitechain is the right place for this product.",
-  // TODO(founder): verify the 10M+ users and sub-cent fee claims against Whitechain's public materials
+
   items: [
     {
       title: "Distribution",
@@ -1372,7 +1366,7 @@ export const team = {
 
 export const pricing = {
   eyebrow: "Pricing",
-  // TODO(founder): confirm pricing model
+
   title: "Simple pricing at launch.",
   body: "1% of processed volume. No seat fees, no monthly plans. Free on testnet.",
   note: "Final pricing announced at mainnet.",

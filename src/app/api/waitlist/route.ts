@@ -23,7 +23,6 @@ export async function POST(request: Request) {
 
   const { company, ...entry } = parsed.data;
 
-  // Honeypot filled in: pretend success so bots learn nothing.
   if (company) return NextResponse.json({ ok: true });
 
   const apiKey = process.env.RESEND_API_KEY;

@@ -1,10 +1,3 @@
-/**
- * Hex equivalents of the dark theme tokens in globals.css.
- *
- * next/og renders with satori, which cannot read CSS variables or oklch, so the
- * generated OG image and favicon need literal values. This is the only place
- * raw color values are allowed. Keep in sync with the `.dark` block.
- */
 export const brandColors = {
   background: "#06090f",
   foreground: "#eff2f5",

@@ -11,7 +11,7 @@ export const waitlistSchema = z.object({
     .optional()
     .or(z.literal("")),
   url: z.url("Enter a valid URL").optional().or(z.literal("")),
-  // honeypot, real users never fill this in
+
   company: z.string().max(0).optional(),
 });
 

@@ -45,7 +45,6 @@ interface FeatureBadgesProps {
   shippedOnStellar?: boolean;
 }
 
-/** Renders both badges for features shipped on Stellar and being ported. */
 export function FeatureBadges({
   status,
   milestone,
