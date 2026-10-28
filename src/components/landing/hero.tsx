@@ -23,9 +23,9 @@ function CyclingWord() {
     <AnimatePresence mode="wait">
       <motion.span
         key={heroWords[index]}
-        initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        exit={{ opacity: 0, y: -14, filter: "blur(6px)" }}
+        initial={{ y: 14, filter: "blur(6px)" }}
+        animate={{ y: 0, filter: "blur(0px)" }}
+        exit={{ y: -14, filter: "blur(6px)" }}
         transition={{ duration: 0.38 }}
         className="inline-block"
       >
