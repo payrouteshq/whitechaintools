@@ -16,7 +16,7 @@ export function WhyWhitechain() {
         {whyWhitechain.items.map((item) => (
           <Card key={item.title} className="gap-4 py-5">
             <CardContent className="space-y-3 px-5">
-              <span className="bg-primary/10 text-primary flex size-9 items-center justify-center rounded-lg">
+              <span className="bg-primary/10 text-primary-text flex size-9 items-center justify-center rounded-lg">
                 <Icon name={item.icon} className="size-5" />
               </span>
               <h3 className="font-semibold">{item.title}</h3>

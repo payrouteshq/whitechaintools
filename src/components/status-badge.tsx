@@ -5,7 +5,7 @@ import { statusLabels, type Milestone, type Status } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const styles: Record<Status, string> = {
-  "shipped-stellar": "border-primary/20 bg-primary/10 text-primary",
+  "shipped-stellar": "border-primary/20 bg-primary/10 text-primary-text",
   porting:
     "border-highlight/30 bg-highlight/15 text-highlight-foreground dark:text-highlight",
   planned: "border-transparent bg-muted text-muted-foreground",

@@ -26,7 +26,7 @@ export function Roadmap() {
             >
               <CardHeader className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-primary font-mono text-sm font-semibold">
+                  <span className="text-primary-text font-mono text-sm font-semibold">
                     {milestone.label}
                   </span>
                   <StatusBadge status={milestone.status} />
@@ -40,7 +40,7 @@ export function Roadmap() {
                   <h3 className="text-muted-foreground mb-2 text-xs font-semibold tracking-wide uppercase">
                     {roadmap.deliverablesLabel}
                   </h3>
-                  <ul className="marker:text-primary list-disc space-y-1 pl-4">
+                  <ul className="marker:text-primary-text list-disc space-y-1 pl-4">
                     {milestone.deliverables.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -50,7 +50,7 @@ export function Roadmap() {
                   <h3 className="text-muted-foreground mb-2 text-xs font-semibold tracking-wide uppercase">
                     {roadmap.verifyLabel}
                   </h3>
-                  <ul className="marker:text-primary list-disc space-y-1 pl-4">
+                  <ul className="marker:text-primary-text list-disc space-y-1 pl-4">
                     {milestone.verify.map((item) => (
                       <li key={item}>{item}</li>
                     ))}

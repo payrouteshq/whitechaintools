@@ -24,7 +24,7 @@ export function Mechanism() {
               <Card className="h-full gap-3 py-5">
                 <CardContent className="space-y-2 px-5">
                   <div className="flex items-center gap-2">
-                    <span className="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-lg">
+                    <span className="bg-primary/10 text-primary-text flex size-8 items-center justify-center rounded-lg">
                       <Icon name={step.icon} className="size-4" />
                     </span>
                     <span className="text-muted-foreground font-mono text-xs">

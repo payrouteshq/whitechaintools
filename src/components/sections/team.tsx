@@ -65,7 +65,7 @@ export function Team() {
           href={team.linkHref}
           target="_blank"
           rel="noreferrer"
-          className="text-primary inline-flex items-center gap-1 font-medium underline-offset-4 hover:underline"
+          className="text-primary-text inline-flex items-center gap-1 font-medium underline-offset-4 hover:underline"
         >
           {team.linkLabel}
           <ExternalLink aria-hidden="true" className="size-3" />

@@ -23,7 +23,7 @@ export function Copilot() {
           <ul className="space-y-5">
             {copilot.capabilities.map((capability) => (
               <li key={capability.title} className="flex gap-4">
-                <span className="bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-lg">
+                <span className="bg-primary/10 text-primary-text flex size-9 shrink-0 items-center justify-center rounded-lg">
                   <Icon name={capability.icon} className="size-5" />
                 </span>
                 <div>

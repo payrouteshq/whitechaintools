@@ -82,7 +82,7 @@ export function HeroMockup() {
         variants={rise}
         className="bg-popover text-popover-foreground dark:ring-foreground/5 mt-4 w-full max-w-xs rounded-xl border p-3 shadow-sm sm:absolute sm:-bottom-24 sm:-left-10 sm:mt-0 dark:shadow-none dark:ring-1"
       >
-        <div className="text-primary mb-2 flex items-center gap-2 text-xs font-medium">
+        <div className="text-primary-text mb-2 flex items-center gap-2 text-xs font-medium">
           <Icon name="Sparkles" className="size-3.5" />
           Copilot
         </div>

@@ -94,7 +94,7 @@ function Transactions() {
               <Mono>{t.amount}</Mono>
             </TableCell>
             <TableCell>{t.token}</TableCell>
-            <TableCell className="text-primary font-mono underline-offset-4">
+            <TableCell className="text-primary-text font-mono underline-offset-4">
               {t.hash}
             </TableCell>
           </TableRow>
@@ -268,7 +268,9 @@ function Developers() {
           >
             {d.event}
             <span
-              className={d.code === 200 ? "text-primary" : "text-destructive"}
+              className={
+                d.code === 200 ? "text-primary-text" : "text-destructive"
+              }
             >
               <Mono>{d.code}</Mono>
             </span>

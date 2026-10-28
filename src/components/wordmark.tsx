@@ -13,7 +13,7 @@ export function Wordmark({ className }: { className?: string }) {
       </span>
       <span className="tracking-tight">
         {site.wordmark.lead}
-        <span className="text-primary">{site.wordmark.accent}</span>
+        <span className="text-primary-text">{site.wordmark.accent}</span>
       </span>
     </span>
   );

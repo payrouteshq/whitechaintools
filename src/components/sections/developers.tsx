@@ -19,7 +19,7 @@ export function Developers() {
         <ul className="space-y-3">
           {developers.bullets.map((bullet) => (
             <li key={bullet} className="flex items-start gap-3 text-sm">
-              <span className="bg-primary/10 text-primary mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full">
+              <span className="bg-primary/10 text-primary-text mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full">
                 <Check aria-hidden="true" className="size-3" />
               </span>
               {bullet}

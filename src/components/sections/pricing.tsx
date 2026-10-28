@@ -7,7 +7,7 @@ export function Pricing() {
     <Section id="pricing" className="bg-secondary/40">
       <Card className="mx-auto max-w-xl text-center">
         <CardContent className="space-y-3 px-8">
-          <p className="text-primary text-xs font-semibold tracking-widest uppercase">
+          <p className="text-primary-text text-xs font-semibold tracking-widest uppercase">
             {pricing.eyebrow}
           </p>
           <h2 className="text-3xl font-semibold tracking-tight">

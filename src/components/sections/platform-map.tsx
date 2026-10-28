@@ -40,7 +40,7 @@ export function PlatformMap() {
               {items.map((item) => (
                 <Card key={item.title} className="gap-0 py-4">
                   <div className="flex items-start gap-3 px-4">
-                    <div className="bg-primary/10 text-primary flex size-8 shrink-0 items-center justify-center rounded-md">
+                    <div className="bg-primary/10 text-primary-text flex size-8 shrink-0 items-center justify-center rounded-md">
                       <Icon name={item.icon} className="size-4" />
                     </div>
                     <div className="min-w-0 space-y-2">

@@ -33,7 +33,7 @@ export function Marketplace() {
         {marketplace.apps.map((app) => (
           <Card key={app.name} className="gap-4 py-5">
             <CardContent className="space-y-3 px-5">
-              <div className="bg-primary/10 text-primary flex size-9 items-center justify-center rounded-lg">
+              <div className="bg-primary/10 text-primary-text flex size-9 items-center justify-center rounded-lg">
                 <Icon name={app.icon} className="size-5" />
               </div>
               <div>

@@ -35,7 +35,7 @@ export function TrackRecord() {
         <ul className="space-y-3 border-l pl-6">
           {trackRecord.shipped.map((item) => (
             <li key={item} className="relative flex items-center gap-3 text-sm">
-              <span className="bg-background text-primary absolute -left-[2.1rem] flex size-5 items-center justify-center rounded-full">
+              <span className="bg-background text-primary-text absolute -left-[2.1rem] flex size-5 items-center justify-center rounded-full">
                 <CircleCheck aria-hidden="true" className="size-5" />
               </span>
               {item}

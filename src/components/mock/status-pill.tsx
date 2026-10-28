@@ -2,9 +2,9 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 const tones: Record<string, string> = {
-  confirmed: "border-primary/20 bg-primary/10 text-primary",
-  active: "border-primary/20 bg-primary/10 text-primary",
-  paid: "border-primary/20 bg-primary/10 text-primary",
+  confirmed: "border-primary/20 bg-primary/10 text-primary-text",
+  active: "border-primary/20 bg-primary/10 text-primary-text",
+  paid: "border-primary/20 bg-primary/10 text-primary-text",
   pending:
     "border-highlight/30 bg-highlight/15 text-highlight-foreground dark:text-highlight",
   trialing:

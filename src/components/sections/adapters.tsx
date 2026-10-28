@@ -73,7 +73,7 @@ export function Adapters() {
                   href={item.docsHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-primary inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline"
+                  className="text-primary-text inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline"
                 >
                   {adapters.docsLabel}
                   <ExternalLink aria-hidden="true" className="size-3" />
@@ -89,7 +89,7 @@ export function Adapters() {
           href={links.adapterPlayground}
           target="_blank"
           rel="noreferrer"
-          className="text-primary inline-flex items-center gap-1 font-medium underline-offset-4 hover:underline"
+          className="text-primary-text inline-flex items-center gap-1 font-medium underline-offset-4 hover:underline"
         >
           {adapters.playgroundLabel}
           <ExternalLink aria-hidden="true" className="size-3" />
